@@ -1,7 +1,7 @@
-package com.renault.drouter.DealerRouter.config;
+package com.renault.dealer.router.config;
 
-import com.renault.drouter.DealerRouter.filter.WebSocketHttpSessionHandshakeInterceptor;
-import com.renault.drouter.DealerRouter.handler.WebSSocketServerHandler;
+import com.renault.dealer.router.filter.WebSocketHttpSessionHandshakeInterceptor;
+import com.renault.dealer.router.handler.WebSSocketServerHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;

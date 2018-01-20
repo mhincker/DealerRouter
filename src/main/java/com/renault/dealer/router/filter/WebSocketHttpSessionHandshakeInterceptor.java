@@ -1,4 +1,4 @@
-package com.renault.drouter.DealerRouter.filter;
+package com.renault.dealer.router.filter;
 
 import com.sun.istack.internal.Nullable;
 import org.springframework.http.server.ServerHttpRequest;
@@ -18,6 +18,8 @@ public class WebSocketHttpSessionHandshakeInterceptor extends HttpSessionHandsha
                                    WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
 
         HttpSession session = getSession(request);
+
+        System.out.println(request.getHeaders().toString());
         if (session != null) {
             if (isCopyHttpSessionId()) {
                 attributes.put(HTTP_SESSION_ID_ATTR_NAME, session.getId());

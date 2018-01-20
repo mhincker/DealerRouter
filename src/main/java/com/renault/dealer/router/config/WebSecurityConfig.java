@@ -1,4 +1,4 @@
-package com.renault.drouter.DealerRouter.config;
+package com.renault.dealer.router.config;
 
 
 import org.springframework.context.annotation.Configuration;
@@ -22,11 +22,11 @@ public class WebSecurityConfig extends
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
                 .formLogin()
-                .loginPage("/ws")
-                .permitAll();
+                .loginPage("/login")
+                .and()
+                .authorizeRequests()
+                .antMatchers("/ws","/dealers/router").permitAll()
+                .anyRequest().authenticated();
     }
 }

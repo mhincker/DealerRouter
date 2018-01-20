@@ -1,4 +1,4 @@
-package com.renault.drouter.DealerRouter;
+package com.renault.dealer.router;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
