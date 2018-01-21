@@ -15,7 +15,7 @@ public class WebSocketHttpSessionHandshakeInterceptor extends HttpSessionHandsha
 
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response,
-                                   WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
+                                   WebSocketHandler wsHandler, Map<String, Object> attributes) {
 
         HttpSession session = getSession(request);
 
