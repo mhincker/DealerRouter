@@ -26,7 +26,7 @@ public class WebSecurityConfig extends
                 .loginPage("/login")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/ws","/dealers/router").permitAll()
+                .antMatchers("/ws","/dealers/router","/client/*").permitAll()
                 .anyRequest().authenticated();
     }
 }

@@ -37,8 +37,11 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-websocket')
 	compile("org.springframework.boot:spring-boot-starter-activemq")
 	compile("org.apache.activemq:activemq-broker")
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("com.h2database:h2")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
+	testCompile("junit:junit")
 }
 
 dependencyManagement {
