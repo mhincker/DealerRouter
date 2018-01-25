@@ -1,10 +1,13 @@
 package com.renault.dealer.router.model;
 
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Dealer {
+public class DealerManager {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -12,12 +15,12 @@ public class Dealer {
     private String uid;
     private String name;
     @Column
-    @ElementCollection(targetClass=Service.class)
-    private Set<Service> services;
+    @ElementCollection(targetClass=Dealer.class)
+    private Set<Dealer> services;
 
-    public Dealer() {}
+    public DealerManager() {}
 
-    public Dealer(String uid, String name) {
+    public DealerManager(String uid, String name) {
         this.uid = uid;
         this.name = name;
     }
@@ -29,12 +32,8 @@ public class Dealer {
                 id, uid, name);
     }
 
-    @ManyToMany(mappedBy = "dealers")
-    public Set<Service> getServices() {
-        return services;
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "post_id")
+    private List<Service> comments = new ArrayList<>();
 
-    public void setServices(Set<Service> services) {
-        this.services = services;
-    }
 }

@@ -16,17 +16,17 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(WebSSocketServerHandler(), "/ws")
-                .addInterceptors(WebSocketHttpSessionHandshakeInterceptor());
+        registry.addHandler(webSSocketServerHandler(), "/ws")
+                .addInterceptors(webSocketHttpSessionHandshakeInterceptor());
     }
 
     @Bean
-    public WebSocketHandler WebSSocketServerHandler() {
+    public WebSocketHandler webSSocketServerHandler() {
         return new WebSSocketServerHandler();
     }
 
     @Bean
-    public HttpSessionHandshakeInterceptor WebSocketHttpSessionHandshakeInterceptor() {
+    public HttpSessionHandshakeInterceptor webSocketHttpSessionHandshakeInterceptor() {
         return new WebSocketHttpSessionHandshakeInterceptor();
     }
 

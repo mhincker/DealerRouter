@@ -1,6 +1,7 @@
 package com.renault.dealer.router.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Service {
@@ -9,22 +10,15 @@ public class Service {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String name;
-    private Dealer dealer;
-
+    @Column
+    @ElementCollection(targetClass=Dealer.class)
+    private Set<Dealer> dealers;
 
     public Service() {}
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Service(String name, Set<Dealer> dealers) {
         this.name = name;
-    }
-
-    public Service(String name, Dealer dealer) {
-        this.name = name;
-        this.dealer = dealer;
+        this.dealers = dealers;
     }
 
     @Override
@@ -34,12 +28,14 @@ public class Service {
                 id, name);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "dealer_id")
-    public Dealer getDealer() {
-        return dealer;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "dealer_service", joinColumns = @JoinColumn(name = "service_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "dealer_id", referencedColumnName = "id"))
+    public Set<Dealer> getDealers() {
+        return dealers;
     }
 
-    public void setDealer(Dealer dealer) {
-        this.dealer = dealer;
+
+    public void setDealers(Set<Dealer> dealers) {
+        this.dealers = dealers;
     }}
+

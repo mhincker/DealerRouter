@@ -5,13 +5,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class DealerRouterConfig {
 
     @Bean
-    public HashMap<String, DealerSockectSession> DealerSockectSessions (){
-      return new HashMap<String, DealerSockectSession>();
+    public Map<String, DealerSockectSession> dealerSockectSessionMap (){
+      return new HashMap<>();
     }
 
 }
